@@ -1,14 +1,42 @@
 /*Variables*/
+const posts = "http://localhost:3000/posts";
+const users = "http://localhost:3000/users";
+const comments = "http://localhost:3000/comments";
+
 const cardTitle = document.querySelectorAll('.card-title');
 const container = document.querySelector('.container');
-const card = document.querySelector(".card");
+const card = document.querySelector(".card")
 
-fetch("db.json")
+fetch("posts")
+    .then(res => res.json())
+    .then(json => json.forEach(post=>createCard(post)))
+
+function createCard (post) {
+    const divSection = document.createElement("div")
+    divSection.classList = "div";
+    card.appendChild(divSection);
+
+    
+}
+        
+
+
+
+
+
+
+
+
+
+for (let i = 0; i < cardTitle.length; i++) {
+    fetch("db.json")
     .then(res => res.json())
     .then(data => {
-for (let i = data.posts.length-1; i > 0 ; i--){
-    let element = document.createElement("div");
-    element.innerHTML = `<div class="row ">
+        cardTitle[i].innerText = data.posts[i].title
+    }) 
+}
+
+/*`<div class="row ">
     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
         <div class="card my-5" style="width: 26rem;">
             <img class="card-img-top" src="assets/fondo-img.jpeg" alt="Card image cap">
@@ -39,18 +67,5 @@ for (let i = data.posts.length-1; i > 0 ; i--){
                         </div>
 
 </div>`
-    container.append(element);
-}
-})
 
-
-
-
-
-for (let i = 0; i < cardTitle.length; i++) {
-    fetch("db.json")
-    .then(res => res.json())
-    .then(data => {
-        cardTitle[i].innerText = data.posts[i].title
-    }) 
-}
+*/
