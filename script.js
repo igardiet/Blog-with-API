@@ -4,18 +4,52 @@ const users = "http://localhost:3000/users";
 const comments = "http://localhost:3000/comments";
 
 const cardTitle = document.querySelectorAll('.card-title');
-const container = document.querySelector('.container');
-const card = document.querySelector(".card")
+const container = document.querySelector(".row");
 
-fetch("posts")
+fetch(posts)
     .then(res => res.json())
     .then(json => json.forEach(post=>createCard(post)))
 
-function createCard (post) {
-    const divSection = document.createElement("div")
-    divSection.classList = "div";
-    card.appendChild(divSection);
 
+  
+
+function createCard (post) {
+    const divCard = document.createElement("div");
+    divCard.classList = "card my-5";
+    divCard.style.width = "26rem";
+
+    container.append(divCard);
+
+    const imgCard = document.createElement("img")
+    imgCard.classList = "card-img-top";
+    imgCard.setAttribute("src", "assets/fondo-img.jpeg");
+    imgCard.setAttribute("alt", "Card image cap");
+
+    divCard.append(imgCard);
+
+    const cardBody = document.createElement("div")
+    cardBody.classList = "card-body";
+
+    imgCard.append(cardBody);
+
+    const cardH5 = document.createElement("h5")
+    cardH5.textContent = post.title;
+
+
+    cardBody.append(cardH5);
+
+    const cardText = document.createElement("p")
+    cardText.classList = "card-text";
+
+    cardH5.append(cardText);
+
+    const cardButton = document.createElement("button")
+    cardButton.classList = "btn btn-primary";
+    cardButton.setAttribute("type", "button");
+    cardButton.setAttribute("data-bs-toggle", "modal");
+    cardButton.setAttribute("data-bs-target", "#exampleModal");
+
+    cardText.append(cardButton);
     
 }
         
@@ -28,44 +62,11 @@ function createCard (post) {
 
 
 
-for (let i = 0; i < cardTitle.length; i++) {
-    fetch("db.json")
+/*for (let i = 0; i < cardTitle.length; i++) {
+    fetch(posts)
     .then(res => res.json())
     .then(data => {
         cardTitle[i].innerText = data.posts[i].title
     }) 
-}
+}*/
 
-/*`<div class="row ">
-    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
-        <div class="card my-5" style="width: 26rem;">
-            <img class="card-img-top" src="assets/fondo-img.jpeg" alt="Card image cap">
-            <div class="card-body">
-            <h5 class="card-title">${data.posts[i].title}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">...</div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-
-</div>`
-
-*/
