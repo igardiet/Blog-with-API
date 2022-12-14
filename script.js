@@ -38,12 +38,15 @@ function createCard(post) {
 
 
 
+
+
+    
 /**************************************************************************/                      
 
 const divModal = document.createElement("div");
 divModal.classList = "modal fade";
 divModal.setAttribute("id", "exampleModal");
-divModal.setAttribute("tabindex", "1");
+divModal.setAttribute("tabindex", "-1");
 divModal.setAttribute("aria-labelledby", "exampleModalLabel");
 divModal.setAttribute("aria-hidden", "true");
 
@@ -83,6 +86,7 @@ modalHeader.appendChild(buttonModalX);
 
 const modalBody = document.createElement("div");
 modalBody.classList = "modal-body";
+modalBody.textContent = post.body;
 
 
 modalContent.appendChild(modalBody);
