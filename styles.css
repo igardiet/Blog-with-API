@@ -2,9 +2,21 @@
     margin: 0 auto;
     display: block;
     text-align: center;
-    width: 50%;
-    border: 0;
+    width: 25%;
+    border: 1px solid black;
     
+}
+
+.modal-content{
+    margin-top: 150px;
+    width: 100%;
+    border: 2px solid  rgb(109, 252, 142);;
+
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
 }
 
 .container{
@@ -16,12 +28,9 @@ body {
     background: -webkit-linear-gradient(to right, #0575E6, #021B79 );  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #0575E6, #021B79 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
 }
 
-.cardHidden{
-    display: none;
-}
+
 
 .card {
     margin: 10px;

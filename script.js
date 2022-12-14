@@ -3,6 +3,10 @@ const posts = "http://localhost:3000/posts";
 const users = "http://localhost:3000/users";
 const comments = "http://localhost:3000/comments";
 const container = document.querySelector(".row");
+const buttonComments = document.querySelectorAll(".btn-primary")
+
+
+
 
 fetch(posts)
     .then(res => res.json())
@@ -110,33 +114,43 @@ fetch(users + `/${post.userId}`)
     })
     
 
-
-
-
-
-
-
-
 const modalFooter = document.createElement("div");
 modalFooter.classList = "modal-footer";
 
 modalContent.appendChild(modalFooter);
 
-const buttonModalGrey = document.createElement("button");
-buttonModalGrey.classList = "btn btn-secondary";
-buttonModalGrey.setAttribute("type","button");
-buttonModalGrey.setAttribute("data-bs-dismiss","modal");
-buttonModalGrey.innerHTML = "Close";
+const buttonModalRed = document.createElement("button");
+buttonModalRed.classList = "btn btn-danger";
+buttonModalRed.setAttribute("type","button");
+buttonModalRed.setAttribute("data-bs-dismiss","modal");
+buttonModalRed.innerHTML = "Delete";
 
-modalFooter.appendChild(buttonModalGrey);
+modalFooter.appendChild(buttonModalRed);
+
+const buttonModalYellow = document.createElement("button");
+buttonModalYellow.classList = "btn btn-warning";
+buttonModalYellow.setAttribute("type","button");
+buttonModalYellow.innerHTML = "Edit";
+
+modalFooter.appendChild(buttonModalYellow);
 
 const buttonModalBlue = document.createElement("button");
 buttonModalBlue.classList = "btn btn-primary";
 buttonModalBlue.setAttribute("type","button");
-buttonModalBlue.innerHTML = "saves changes";
+buttonModalBlue.innerHTML = "Comments";
 
 modalFooter.appendChild(buttonModalBlue);
 
 
 
+}
+
+
+for(let i = 0; i < buttonComments.length; i++){
+    buttonComments[i].addEventListener("click", function_comments)
+}
+
+
+function function_comments(){
+    console.log("HOLA")
 }
