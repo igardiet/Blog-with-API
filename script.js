@@ -14,7 +14,7 @@ function createCard(post) {
     divCard.classList = "card my-5";
     divCard.style.width = "26rem";
     divCard.setAttribute("data-bs-toggle", "modal");
-    divCard.setAttribute("data-bs-target", "#exampleModal");
+    divCard.setAttribute("data-bs-target", "#exampleModal" + post.id);
 
     const imgCard = document.createElement("img")
     imgCard.classList = "card-img-top";
@@ -42,8 +42,8 @@ function createCard(post) {
 
 const divModal = document.createElement("div");
 divModal.classList = "modal fade";
-divModal.setAttribute("id", "exampleModal");
-divModal.setAttribute("tabindex", "1");
+divModal.setAttribute("id", "exampleModal" + post.id);
+divModal.setAttribute("tabindex", "-1");
 divModal.setAttribute("aria-labelledby", "exampleModalLabel");
 divModal.setAttribute("aria-hidden", "true");
 
@@ -83,7 +83,7 @@ modalHeader.appendChild(buttonModalX);
 
 const modalBody = document.createElement("div");
 modalBody.classList = "modal-body";
-
+modalBody.textContent = post.body;
 
 modalContent.appendChild(modalBody);
 
@@ -96,12 +96,14 @@ const buttonModalGrey = document.createElement("button");
 buttonModalGrey.classList = "btn btn-secondary";
 buttonModalGrey.setAttribute("type","button");
 buttonModalGrey.setAttribute("data-bs-dismiss","modal");
+buttonModalGrey.innerHTML = "Close";
 
 modalFooter.appendChild(buttonModalGrey);
 
 const buttonModalBlue = document.createElement("button");
 buttonModalBlue.classList = "btn btn-primary";
 buttonModalBlue.setAttribute("type","button");
+buttonModalBlue.innerHTML = "saves changes";
 
 modalFooter.appendChild(buttonModalBlue);
 
