@@ -99,12 +99,12 @@ fetch(users + `/${post.userId}`)
     .then(json => {
         const pUsers = document.createElement("p");
         pUsers.classList = "users";
-        pUsers.textContent = json.username;
+        pUsers.innerHTML = `<b>Username:</b> </br> ${json.username}`;
         modalBody.appendChild(pUsers);
 
         const pGmail = document.createElement("p");
         pGmail.classList = "gmail";
-        pGmail.textContent = json.email;
+        pGmail.innerHTML = `<b>Email:</b> </br> ${json.email}`;
         modalBody.appendChild(pGmail);
 
     })
