@@ -106,6 +106,7 @@ fetch(users + `/${post.userId}`)
         pGmail.classList = "gmail";
         pGmail.textContent = json.email;
         modalBody.appendChild(pGmail);
+
     })
     
 
