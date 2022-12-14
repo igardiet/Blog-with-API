@@ -8,6 +8,22 @@ fetch(posts)
     .then(res => res.json())
     .then(json => json.forEach(post=>createCard(post)))
 
+fetch(users)
+    .then(res => res.json())
+    .then(json => json.forEach(user=>createUser(user)))
+
+    function createUser(user) {
+        const pUser = document.createElement("p");
+        pUser.classList = "username";
+        pUser.textContent = 'hola';
+    
+        const modalBody = document.createElement("div");
+        modalBody.classList = "modal-body";
+    
+        modalBody.appendChild(pUser);
+    
+    }
+
 
 function createCard(post) {
     const divCard = document.createElement("div");
@@ -86,9 +102,16 @@ modalHeader.appendChild(buttonModalX);
 
 const modalBody = document.createElement("div");
 modalBody.classList = "modal-body";
-modalBody.textContent = post.body;
 
 modalContent.appendChild(modalBody);
+
+const pBody = document.createElement("p");
+pBody.classList = "body";
+pBody.textContent = post.body;
+
+modalBody.appendChild(pBody);
+
+
 
 const modalFooter = document.createElement("div");
 modalFooter.classList = "modal-footer";
@@ -113,3 +136,5 @@ modalFooter.appendChild(buttonModalBlue);
 
 
 }
+
+
