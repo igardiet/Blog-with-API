@@ -50,6 +50,7 @@ const divModal = document.createElement("div");
 divModal.classList = "modal fade";
 divModal.setAttribute("id", "exampleModal" + post.id);
 divModal.setAttribute("tabindex", "1");
+divModal.setAttribute("data-bs-toggle", "modal");
 divModal.setAttribute("aria-labelledby", "exampleModalLabel");
 divModal.setAttribute("aria-hidden", "true");
 
@@ -122,7 +123,6 @@ modalContent.appendChild(modalFooter);
 const buttonModalRed = document.createElement("button");
 buttonModalRed.classList = "btn btn-danger";
 buttonModalRed.setAttribute("type","button");
-buttonModalRed.setAttribute("data-bs-dismiss","modal");
 buttonModalRed.innerHTML = "Delete";
 
 modalFooter.appendChild(buttonModalRed);
