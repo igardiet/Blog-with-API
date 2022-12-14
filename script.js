@@ -22,7 +22,6 @@ function createCard(post) {
     imgCard.setAttribute("alt", "Card image cap");
 
 
-
     const cardBody = document.createElement("div")
     cardBody.classList = "card-body";
  
@@ -86,9 +85,36 @@ modalHeader.appendChild(buttonModalX);
 
 const modalBody = document.createElement("div");
 modalBody.classList = "modal-body";
-modalBody.textContent = post.body;
 
 modalContent.appendChild(modalBody);
+
+const pBody = document.createElement("p");
+pBody.classList = "body";
+pBody.textContent = post.body;
+
+modalBody.appendChild(pBody);
+
+fetch(users + `/${post.userId}`)
+    .then(res => res.json())
+    .then(json => {
+        const pUsers = document.createElement("p");
+        pUsers.classList = "users";
+        pUsers.textContent = json.username;
+        modalBody.appendChild(pUsers);
+
+        const pGmail = document.createElement("p");
+        pGmail.classList = "gmail";
+        pGmail.textContent = json.email;
+        modalBody.appendChild(pGmail);
+    })
+    
+
+
+
+
+
+
+
 
 const modalFooter = document.createElement("div");
 modalFooter.classList = "modal-footer";
