@@ -228,7 +228,7 @@ const divTotal = document.createElement("div");
 
       }))
 
-buttonModalRed.addEventListener("click",function_delete);
+
 
 function function_delete(){
     fetch(posts + `/${post.id}`,{
@@ -236,6 +236,21 @@ function function_delete(){
     }).then(()=>location.reload())
     
     }
+
+    
+
+
+buttonModalRed.addEventListener("click",function_edit);
+
+function function_edit(){
+    const resultado = window.confirm('¿Estas seguro de que quieres borrar el post?')
+
+        if (resultado === true) {
+            function_delete();
+       
+        }
+            
+            }
 
     
 }
