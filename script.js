@@ -19,11 +19,28 @@ function createCard(post) {
     divCard.setAttribute("data-bs-target", "#exampleModal" + post.id);
     const imgCard = document.createElement("img");
     imgCard.classList = "card-img-top";
-    
+
+   
+
+    const cargarImagen = (entradas, observador) => {
+
+        entradas.forEach((entrada) => {
+            if(entrada.isIntersecting){
+                entrada.target.classList.add('visible');
+            } 
+        })
+    }
+    const observador = new IntersectionObserver(cargarImagen,  {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.2
+    });
+
+    observador.observe(imgCard);
+
     fetch(images + `/${528+post.id}`)
     .then(res => res.json())
     .then(json =>  {
-        console.log(json.download_url);
         imgCard.setAttribute("src", json.download_url);
         imgCard.setAttribute("alt", "Card image cap");
     })
