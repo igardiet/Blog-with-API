@@ -122,3 +122,7 @@ body {
     border-radius: 1000px;
 }
 
+.delete-yn:hover {
+    background-color: rgb(64, 64, 249);
+    color: white;
+}

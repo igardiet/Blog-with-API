@@ -251,6 +251,15 @@ buttonInput.addEventListener("click", function_update);
         buttonModalBlue.addEventListener("click",function_comments);
 
         function function_comments(){ 
+
+            if(divInput.classList.contains('div-input_show')) {
+                divInput.classList.replace('div-input_show', 'div-input');
+            }
+
+            if(divTotalDelete.classList.contains('div-total-delete_show')) {
+                divTotalDelete.classList.replace('div-total-delete_show', 'div-total-delete');
+            }
+
             if(divTotal.classList.contains('div-total_show')) {
                 divTotal.classList.replace('div-total_show', 'div-total');
                 return
@@ -264,6 +273,8 @@ buttonInput.addEventListener("click", function_update);
         imgCard.addEventListener("click", function_card);
 
         function function_card() {
+
+            
             if(divTotal.classList.contains('div-total_show')) {
                 divTotal.classList.replace('div-total_show', 'div-total');
                 
@@ -303,6 +314,14 @@ buttonInput.addEventListener("click", function_update);
       buttonModalRed.addEventListener("click", function_delete_buttons);
 
         function function_delete_buttons() {
+
+            if(divTotal.classList.contains('div-total_show')) {
+                divTotal.classList.replace('div-total_show', 'div-total');
+            }
+
+            if(divInput.classList.contains('div-input_show')) {
+                divInput.classList.replace('div-input_show', 'div-input');
+            }
             if(divTotalDelete.classList.contains('div-total-delete')) {
                 divTotalDelete.classList.replace('div-total-delete', 'div-total-delete_show');
                 
@@ -323,12 +342,23 @@ function function_delete(){
     buttonModalYellow.addEventListener("click",function_input);
 
 function function_input(){
+
+    if(divTotal.classList.contains('div-total_show')) {
+        divTotal.classList.replace('div-total_show', 'div-total');
+    }
+    
+    if(divTotalDelete.classList.contains('div-total-delete_show')) {
+        divTotalDelete.classList.replace('div-total-delete_show', 'div-total-delete');
+    }
+
     if(divInput.classList.contains('div-input')) {
         divInput.classList.replace('div-input', 'div-input_show');
         
     }else {
         divInput.classList.replace('div-input_show', 'div-input');
     }
+
+    
     
 }
 
