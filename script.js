@@ -21,6 +21,14 @@ function createCard(post) {
     divCard.setAttribute("data-bs-toggle", "modal");
     divCard.setAttribute("data-bs-target", "#exampleModal" + post.id);
 
+    divCard.addEventListener("click", function_card);
+    function function_card() {
+        if(divTotal.classList.contains('div-total_show')) {
+            divTotal.classList.replace('div-total_show', 'div-total');
+        }
+
+    }
+
     const imgCard = document.createElement("img")
     imgCard.classList = "card-img-top";
     imgCard.setAttribute("src", "assets/fondo-img.jpeg");
@@ -115,10 +123,7 @@ modalBody.appendChild(pBody);
         modalBody.appendChild(pGmail);
     })
 
-    const divTotal = document.createElement("div");
-    divTotal.classList.add("div-total"); 
-
-modalBody.appendChild(divTotal);
+    
 
 const modalFooter = document.createElement("div");
 modalFooter.classList = "modal-footer";
@@ -146,6 +151,10 @@ buttonModalBlue.innerHTML = "Comments";
 
 modalFooter.appendChild(buttonModalBlue);
 
+const divTotal = document.createElement("div");
+    divTotal.classList.add("div-total"); 
+
+    modalFooter.appendChild(divTotal);
 
 
 /*Comments*/
@@ -187,7 +196,6 @@ modalFooter.appendChild(buttonModalBlue);
         function function_comments(){
                     divTotal.classList.toggle('div-total_show');    
                 }
-        
 
       }))
 
