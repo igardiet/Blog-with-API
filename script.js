@@ -179,6 +179,7 @@ divInput.classList.add("div-input");
 modalFooter.appendChild(divInput);
 
 const pTitleInput = document.createElement("p");
+pTitleInput.classList.add("p-title-input")
 const titleInput = document.createElement("input");
 titleInput.setAttribute("type", "text");
 titleInput.classList.add("title-input");
@@ -195,9 +196,10 @@ titleLabel.appendChild(titleInput);
 
 
 const pBodyInput = document.createElement("p");
+pBodyInput.classList.add("p-body-input")
 const bodyInput = document.createElement("textarea");
 bodyInput.classList.add("body-input");
-bodyInput.setAttribute("cols", "40");
+bodyInput.setAttribute("cols", "50");
 bodyInput.setAttribute("rows", "8");
 bodyInput.textContent = post.body
 const bodyLabel = document.createElement("label");
@@ -210,7 +212,7 @@ bodyLabel.appendChild(bodyInput);
 
 const buttonInput = document.createElement("boton");
 buttonInput.classList.add("button-input");
-buttonInput.classList = "btn btn-warning";
+buttonInput.classList = "btn btn-light btn-input";
 buttonInput.textContent = "Update";
 
 divInput.appendChild(buttonInput);
@@ -339,14 +341,30 @@ function function_delete(){
     }).then(()=>location.reload())
     
     }
+
+        buttonDeleteNo.addEventListener("click", function_button_deleteNo);
+
+function function_button_deleteNo () {
+    if(divTotalDelete.classList.contains('div-total-delete_show')) {
+        divTotalDelete.classList.replace('div-total-delete_show', 'div-total-delete');
+    }
+}
+
+
+
+
+
+
+
     buttonModalYellow.addEventListener("click",function_input);
+    
 
 function function_input(){
 
     if(divTotal.classList.contains('div-total_show')) {
         divTotal.classList.replace('div-total_show', 'div-total');
     }
-    
+
     if(divTotalDelete.classList.contains('div-total-delete_show')) {
         divTotalDelete.classList.replace('div-total-delete_show', 'div-total-delete');
     }

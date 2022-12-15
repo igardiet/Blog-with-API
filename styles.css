@@ -4,6 +4,7 @@
     text-align: center;
     width: 25%;
     border: 1px solid black;
+    cursor: pointer;
     
 }
 
@@ -123,6 +124,31 @@ body {
 }
 
 .delete-yn:hover {
-    background-color: rgb(64, 64, 249);
+    background-color: #0c6dfd;
     color: white;
+}
+
+.p-title-input{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.title-input{
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.p-body-input {
+    text-align: center;
+}
+
+.body-input {
+    margin: 0 auto;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.btn-input:hover {
+    background-color: #FFC007;
+
 }
