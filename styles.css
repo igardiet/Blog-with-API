@@ -74,10 +74,25 @@ body {
     display: block;
 }
 
-.navbar {
+.post-deletion {
+    background-color: whitesmoke;
+    width: 25%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    margin-bottom: -200px;
+    position: relative;
+    z-index: 2;
+}
+
+/* .navbar {
     position: fixed;
     z-index: 2;
     width: 100%;
     margin-top:-10%;
-}
+} */
+
+
 
