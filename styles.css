@@ -20,7 +20,7 @@
 }
 
 .container{
-    margin-top: 12.5%;
+    margin-top: 10.5%;
 }
 
 body {
@@ -77,5 +77,5 @@ body {
     position: fixed;
     z-index: 2;
     width: 100%;
-    margin-top:-12.1%;
+    margin-top:-10%;
 }
