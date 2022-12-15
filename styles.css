@@ -103,6 +103,13 @@ body {
     width: 100%;
 }
 
+.div-input{
+    display:none;
+}
+
+
+
+
 .div-delete-buttons {
     margin-top: 30px;
     text-align: center;

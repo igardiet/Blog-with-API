@@ -164,14 +164,58 @@ buttonModalBlue.innerHTML = "Comments";
 modalFooter.appendChild(buttonModalBlue);
 
 const divTotal = document.createElement("div");
-    divTotal.classList.add("div-total"); 
+divTotal.classList.add("div-total"); 
 
-    modalFooter.appendChild(divTotal);
+modalFooter.appendChild(divTotal);
 
-    const divTotalDelete = document.createElement("div")
-    divTotalDelete.classList.add("div-total-delete");
+const divTotalDelete = document.createElement("div")
+divTotalDelete.classList.add("div-total-delete");
 
-    modalFooter.appendChild(divTotalDelete);
+modalFooter.appendChild(divTotalDelete);
+
+const divInput = document.createElement("div");
+divInput.classList.add("div-input");
+
+modalFooter.appendChild(divInput);
+
+const pTitleInput = document.createElement("p");
+const titleInput = document.createElement("input");
+titleInput.setAttribute("type", "text");
+titleInput.classList.add("title-input");
+titleInput.setAttribute("value", post.title);
+titleInput.style.width = "20vw";
+const titleLabel = document.createElement("label");
+titleLabel.innerHTML= `<b>Title:</b>`;
+
+
+divInput.appendChild(pTitleInput);
+pTitleInput.appendChild(titleLabel);
+titleLabel.appendChild(titleInput);
+
+
+
+const pBodyInput = document.createElement("p");
+const bodyInput = document.createElement("textarea");
+bodyInput.classList.add("body-input");
+bodyInput.setAttribute("cols", "40");
+bodyInput.setAttribute("rows", "8");
+bodyInput.textContent = post.body
+const bodyLabel = document.createElement("label");
+bodyLabel.innerHTML= `<b>Body:</b>`;
+
+
+divInput.appendChild(pBodyInput);
+pBodyInput.appendChild(bodyLabel);
+bodyLabel.appendChild(bodyInput);
+
+const buttonInput = document.createElement("boton");
+buttonInput.classList.add("button-input");
+buttonInput.classList = "btn btn-warning";
+buttonInput.textContent = "Update";
+
+divInput.appendChild(buttonInput);
+
+buttonInput.addEventListener("click", function_update);
 
 
 /*Comments*/
@@ -222,8 +266,16 @@ const divTotal = document.createElement("div");
         function function_card() {
             if(divTotal.classList.contains('div-total_show')) {
                 divTotal.classList.replace('div-total_show', 'div-total');
-                return
+                
             }
+            if(divTotalDelete.classList.contains('div-total-delete_show')) {
+                divTotalDelete.classList.replace('div-total-delete_show', 'div-total-delete');
+               
+            } 
+            if(divInput.classList.contains('div-input_show')) {
+                divInput.classList.replace('div-input_show', 'div-input');
+            }
+            
         }
         
 
@@ -260,9 +312,7 @@ const divTotal = document.createElement("div");
         }
 
 
-        buttonDeleteYes.addEventListener("click", function_delete)
-
-
+        buttonDeleteYes.addEventListener("click", function_delete);
 
 function function_delete(){
     fetch(posts + `/${post.id}`,{
@@ -270,8 +320,35 @@ function function_delete(){
     }).then(()=>location.reload())
     
     }
+    buttonModalYellow.addEventListener("click",function_input);
 
+function function_input(){
+    if(divInput.classList.contains('div-input')) {
+        divInput.classList.replace('div-input', 'div-input_show');
+        
+    }else {
+        divInput.classList.replace('div-input_show', 'div-input');
+    }
     
+}
+
+function function_update(){
+    fetch(posts + "/" + post.id,{
+        method: 'PUT',
+        body: JSON.stringify({
+            id: post.id,
+            title: titleInput.value,
+            body: bodyInput.value,
+            userId: post.userId
+        }),
+        headers: {
+            'content-type': 'application/json; charset=UTF-8',
+        }
+    })
+    .then(res => res.json())
+    .then(json => location.reload())
+}
+
 
 
 
