@@ -186,7 +186,7 @@ titleInput.classList.add("title-input");
 titleInput.setAttribute("value", post.title);
 titleInput.style.width = "20vw";
 const titleLabel = document.createElement("label");
-titleLabel.innerHTML= `<b>Title:</b>`;
+titleLabel.innerHTML= `<b>Title:</b><br>`;
 
 
 divInput.appendChild(pTitleInput);
