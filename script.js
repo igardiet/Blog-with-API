@@ -3,7 +3,7 @@ const posts = "http://localhost:3000/posts";
 const users = "http://localhost:3000/users";
 const comments = "http://localhost:3000/comments";
 const container = document.querySelector(".row");
-const buttonComments = document.querySelectorAll(".btn-primary")
+
 
 
 
@@ -139,18 +139,46 @@ buttonModalBlue.classList = "btn btn-primary";
 buttonModalBlue.setAttribute("type","button");
 buttonModalBlue.innerHTML = "Comments";
 
+buttonModalBlue.addEventListener("click", function_comments);
+
 modalFooter.appendChild(buttonModalBlue);
 
 
+/*Comments*/
+
+fetch("http://localhost:3000/post/" + post.id + "/comments")
+    .then(res => res.json())
+    .then(json => json.forEach(function (value) {
+
+        const divComments = document.createElement("div");
+        const titleComments = document.createElement("h5");
+        const bodyComments = document.createElement("p");
+
+        modalBody.appendChild(divComments);
+        divComments.appendChild(titleComments);
+        divComments.appendChild(bodyComments);
+
+        titleComments.innerHTML = value.name;
+        bodyComments.innerText = value.body;
+        
+      }))
+
+        
+
+    
+
+
+
 
 }
-
-
-for(let i = 0; i < buttonComments.length; i++){
-    buttonComments[i].addEventListener("click", function_comments)
-}
-
-
 function function_comments(){
-    console.log("HOLA")
+    
 }
+
+
+
+
+   
+
+
+
