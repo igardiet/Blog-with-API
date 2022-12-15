@@ -143,42 +143,46 @@ buttonModalBlue.addEventListener("click", function_comments);
 
 modalFooter.appendChild(buttonModalBlue);
 
+const divComments = document.createElement("div");
+        divComments.classList.add('div-comments');
 
+        const titleComments = document.createElement("p");
+        titleComments.classList.add('title-comments');
+
+        const bodyComments = document.createElement("p");
+        bodyComments.classList.add('body-comments');
+
+        const emailComments = document.createElement("p");
+        emailComments.classList.add('email-comments');
 /*Comments*/
-
-fetch("http://localhost:3000/post/" + post.id + "/comments")
+setTimeout(() => {
+    fetch("http://localhost:3000/post/" + post.id + "/comments")
     .then(res => res.json())
     .then(json => json.forEach(function (value) {
 
-        const divComments = document.createElement("div");
-        const titleComments = document.createElement("h5");
-        const bodyComments = document.createElement("p");
-
         modalBody.appendChild(divComments);
+        divComments.appendChild(emailComments);
         divComments.appendChild(titleComments);
         divComments.appendChild(bodyComments);
 
-        titleComments.innerHTML = value.name;
+        emailComments.innerHTML = value.email;
+        titleComments.innerHTML =`<b>${value.name}</b>`;
         bodyComments.innerText = value.body;
         
+        
       }))
+}, 1000);
 
+function function_comments(){
+    for (let i = 0; i < divComments.length; i++) {
+    divComments[i].classList.toggle('div-comments_show');
+
+    }
+    console.log(divComments);
+
+}
         
 
     
 
-
-
-
 }
-function function_comments(){
-    
-}
-
-
-
-
-   
-
-
-
