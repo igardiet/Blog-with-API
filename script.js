@@ -100,7 +100,8 @@ pBody.textContent = post.body;
 
 modalBody.appendChild(pBody);
 
-fetch(users + `/${post.userId}`)
+
+    fetch(users + `/${post.userId}`)
     .then(res => res.json())
     .then(json => {
         const pUsers = document.createElement("p");
@@ -112,11 +113,10 @@ fetch(users + `/${post.userId}`)
         pGmail.classList = "gmail";
         pGmail.innerHTML = `<b>Email:</b> </br> ${json.email}`;
         modalBody.appendChild(pGmail);
-
     })
 
-const divTotal = document.createElement("div");
-divTotal.classList.add("div-total"); 
+    const divTotal = document.createElement("div");
+    divTotal.classList.add("div-total"); 
 
 modalBody.appendChild(divTotal);
 
@@ -150,8 +150,7 @@ modalFooter.appendChild(buttonModalBlue);
 
 /*Comments*/
 
-setTimeout(() => {
-    fetch("http://localhost:3000/post/" + post.id + "/comments")
+        fetch("http://localhost:3000/post/" + post.id + "/comments")
     .then(res => res.json())
     .then(json => json.forEach(function (value) {
 
@@ -167,10 +166,10 @@ setTimeout(() => {
         const emailComments = document.createElement("p");
         emailComments.classList.add('email-comments');
 
-        divTotal.appendChild(divComments);
-        divComments.appendChild(emailComments);
-        divComments.appendChild(titleComments);
-        divComments.appendChild(bodyComments);
+            divTotal.appendChild(divComments);
+            divComments.appendChild(emailComments);
+            divComments.appendChild(titleComments);
+            divComments.appendChild(bodyComments);
 
         emailComments.innerHTML = value.email;
         titleComments.innerHTML =`<b>${value.name}</b>`;
@@ -191,7 +190,6 @@ setTimeout(() => {
         
 
       }))
-}, 1000);    
 
 buttonModalRed.addEventListener("click",function_delete);
 
