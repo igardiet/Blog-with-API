@@ -151,10 +151,15 @@ const divTotal = document.createElement("div");
 
     modalFooter.appendChild(divTotal);
 
+    const divTotalDelete = document.createElement("div")
+    divTotalDelete.classList.add("div-total-delete")
+
+    modalFooter.appendChild(divTotalDelete);
+
 
 /*Comments*/
 
-        fetch("http://localhost:3000/post/" + post.id + "/comments")
+    fetch("http://localhost:3000/post/" + post.id + "/comments")
     .then(res => res.json())
     .then(json => json.forEach(function (value) {
 
@@ -179,14 +184,10 @@ const divTotal = document.createElement("div");
         titleComments.innerHTML =`<b>${value.name}</b>`;
         bodyComments.innerText = value.body;
 
-        const blueButton = document.querySelectorAll(".btn-primary");
-        for(let i = 0; i < blueButton.length; i++){
-            blueButton[i].addEventListener("click", function_comments);
-        }
+
         
+
         buttonModalBlue.addEventListener("click",function_comments);
-
-
 
         function function_comments(){ 
             if(divTotal.classList.contains('div-total_show')) {
@@ -210,6 +211,40 @@ const divTotal = document.createElement("div");
         
 
       }))
+
+      const divDeletebuttons = document.createElement("div");
+      divDeletebuttons.classList.add("div-delete-buttons")
+
+      const buttonDeleteYes = document.createElement("button");
+      buttonDeleteYes.classList = "btn btn-secundary";
+      buttonDeleteYes.setAttribute("type","button");
+      buttonDeleteYes.innerHTML = "Yes";
+
+      const buttonDeleteNo = document.createElement("button");
+      buttonDeleteNo.classList = "btn btn-primary";
+      buttonDeleteNo.setAttribute("type","button");
+      buttonDeleteNo.innerHTML = "No";
+
+      
+      divTotalDelete.appendChild(divDeletebuttons)
+      divDeletebuttons.appendChild(buttonDeleteYes)
+      divDeletebuttons.appendChild(buttonDeleteNo)
+
+      buttonModalYellow.addEventListener("click", function_delete_buttons)
+
+        function function_delete_buttons() {
+            if(divTotalDelete.classList.contains('div-total-delete')) {
+                divTotal.classList.replace('div-total-delete', 'div-total-delete_show');
+                return
+            }
+            if(divTotalDelete.classList.contains('div-total-delete_show')) {
+                divTotal.classList.replace('div-total-delete_show', 'div-total-delete');
+                return
+            }
+        }
+
+
+
 
 
 

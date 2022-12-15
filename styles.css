@@ -82,5 +82,13 @@ body {
     margin-top:-10%;
 }
 
+.div-total-delete{
+    display: none;
+}
+
+.div-total-delete_show{
+    width: 100%;
+}
+
 
 
