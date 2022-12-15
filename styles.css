@@ -20,7 +20,7 @@
 }
 
 .container{
-    margin-top: 60px;
+    margin-top: 200px;
 }
 
 body {
@@ -45,7 +45,7 @@ body {
 .card img {
     margin-top: 7px;
     border-radius: 6px;
-
+    height: 50vh;
 }
 
 .email-comments {
@@ -71,4 +71,11 @@ body {
     overflow: scroll;
     max-height: 200px;
     display: block;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    margin-top:-12.1%;
 }

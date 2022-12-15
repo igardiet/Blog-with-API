@@ -2,11 +2,8 @@
 const posts = "http://localhost:3000/posts";
 const users = "http://localhost:3000/users";
 const comments = "http://localhost:3000/comments";
+const images = "http://localhost:3000/images";
 const container = document.querySelector(".row");
-
-
-
-
 
 
 fetch(posts)
@@ -20,19 +17,17 @@ function createCard(post) {
     divCard.style.width = "26rem";
     divCard.setAttribute("data-bs-toggle", "modal");
     divCard.setAttribute("data-bs-target", "#exampleModal" + post.id);
-
-    divCard.addEventListener("click", function_card);
-    function function_card() {
-        if(divTotal.classList.contains('div-total_show')) {
-            divTotal.classList.replace('div-total_show', 'div-total');
-        }
-
-    }
-
-    const imgCard = document.createElement("img")
+    const imgCard = document.createElement("img");
     imgCard.classList = "card-img-top";
-    imgCard.setAttribute("src", "assets/fondo-img.jpeg");
-    imgCard.setAttribute("alt", "Card image cap");
+    
+    fetch(images + `/${528+post.id}`)
+    .then(res => res.json())
+    .then(json =>  {
+        console.log(json.download_url);
+        imgCard.setAttribute("src", json.download_url);
+        imgCard.setAttribute("alt", "Card image cap");
+    })
+    
 
 
     const cardBody = document.createElement("div")
@@ -58,7 +53,7 @@ function createCard(post) {
 const divModal = document.createElement("div");
 divModal.classList = "modal fade";
 divModal.setAttribute("id", "exampleModal" + post.id);
-divModal.setAttribute("tabindex", "1");
+divModal.setAttribute("tabindex", "-1");
 divModal.setAttribute("data-bs-toggle", "modal");
 divModal.setAttribute("aria-labelledby", "exampleModalLabel");
 divModal.setAttribute("aria-hidden", "true");
@@ -193,9 +188,26 @@ const divTotal = document.createElement("div");
 
 
 
-        function function_comments(){
-                    divTotal.classList.toggle('div-total_show');    
-                }
+        function function_comments(){ 
+            if(divTotal.classList.contains('div-total_show')) {
+                divTotal.classList.replace('div-total_show', 'div-total');
+                return
+            }
+            if(divTotal.classList.contains('div-total')){
+                divTotal.classList.replace('div-total', 'div-total_show');  
+                return
+            }
+                      
+        }
+        imgCard.addEventListener("click", function_card);
+
+        function function_card() {
+            if(divTotal.classList.contains('div-total_show')) {
+                divTotal.classList.replace('div-total_show', 'div-total');
+                return
+            }
+        }
+        
 
       }))
 
@@ -208,4 +220,5 @@ function function_delete(){
     
     }
 
+    
 }
