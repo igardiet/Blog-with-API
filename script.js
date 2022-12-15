@@ -8,6 +8,7 @@ const container = document.querySelector(".row");
 
 
 
+
 fetch(posts)
     .then(res => res.json())
     .then(json => json.forEach(post=>createCard(post)))
@@ -113,7 +114,11 @@ fetch(users + `/${post.userId}`)
         modalBody.appendChild(pGmail);
 
     })
-    
+
+const divTotal = document.createElement("div");
+divTotal.classList.add("div-total"); 
+
+modalBody.appendChild(divTotal);
 
 const modalFooter = document.createElement("div");
 modalFooter.classList = "modal-footer";
@@ -139,11 +144,18 @@ buttonModalBlue.classList = "btn btn-primary";
 buttonModalBlue.setAttribute("type","button");
 buttonModalBlue.innerHTML = "Comments";
 
-buttonModalBlue.addEventListener("click", function_comments);
-
 modalFooter.appendChild(buttonModalBlue);
 
-const divComments = document.createElement("div");
+
+
+/*Comments*/
+
+setTimeout(() => {
+    fetch("http://localhost:3000/post/" + post.id + "/comments")
+    .then(res => res.json())
+    .then(json => json.forEach(function (value) {
+
+        const divComments = document.createElement("div");
         divComments.classList.add('div-comments');
 
         const titleComments = document.createElement("p");
@@ -154,13 +166,8 @@ const divComments = document.createElement("div");
 
         const emailComments = document.createElement("p");
         emailComments.classList.add('email-comments');
-/*Comments*/
-setTimeout(() => {
-    fetch("http://localhost:3000/post/" + post.id + "/comments")
-    .then(res => res.json())
-    .then(json => json.forEach(function (value) {
 
-        modalBody.appendChild(divComments);
+        divTotal.appendChild(divComments);
         divComments.appendChild(emailComments);
         divComments.appendChild(titleComments);
         divComments.appendChild(bodyComments);
@@ -168,21 +175,31 @@ setTimeout(() => {
         emailComments.innerHTML = value.email;
         titleComments.innerHTML =`<b>${value.name}</b>`;
         bodyComments.innerText = value.body;
+
+        const blueButton = document.querySelectorAll(".btn-primary");
+        for(let i = 0; i < blueButton.length; i++){
+            blueButton[i].addEventListener("click", function_comments);
+        }
         
+        buttonModalBlue.addEventListener("click",function_comments);
+
+
+
+        function function_comments(){
+                    divTotal.classList.toggle('div-total_show');    
+                }
         
+
       }))
-}, 1000);
+}, 1000);    
 
-function function_comments(){
-    for (let i = 0; i < divComments.length; i++) {
-    divComments[i].classList.toggle('div-comments_show');
+buttonModalRed.addEventListener("click",function_delete);
 
-    }
-    console.log(divComments);
-
-}
-        
-
+function function_delete(){
+    fetch(posts + `/${post.id}`,{
+        method: 'DELETE',
+    }).then(()=>location.reload())
     
+    }
 
 }
