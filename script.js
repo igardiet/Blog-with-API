@@ -229,16 +229,17 @@ const divTotal = document.createElement("div");
 
       }))
 
-      const divDeletebuttons = document.createElement("div");
+      const divDeletebuttons = document.createElement("p");
       divDeletebuttons.classList.add("div-delete-buttons");
+      divDeletebuttons.innerHTML = "Are you sure that you want to delete it?"
 
       const buttonDeleteYes = document.createElement("button");
-      buttonDeleteYes.classList = "btn btn-secundary";
+      buttonDeleteYes.classList = "btn btn-secundary delete-yn";
       buttonDeleteYes.setAttribute("type","button");
       buttonDeleteYes.innerHTML = "Yes";
 
       const buttonDeleteNo = document.createElement("button");
-      buttonDeleteNo.classList = "btn btn-primary";
+      buttonDeleteNo.classList = "btn btn-secundary delete-yn";
       buttonDeleteNo.setAttribute("type","button");
       buttonDeleteNo.innerHTML = "No";
 
@@ -247,7 +248,7 @@ const divTotal = document.createElement("div");
       divDeletebuttons.appendChild(buttonDeleteYes);
       divDeletebuttons.appendChild(buttonDeleteNo);
 
-      buttonModalYellow.addEventListener("click", function_delete_buttons);
+      buttonModalRed.addEventListener("click", function_delete_buttons);
 
         function function_delete_buttons() {
             if(divTotalDelete.classList.contains('div-total-delete')) {
@@ -259,7 +260,7 @@ const divTotal = document.createElement("div");
         }
 
 
-
+        buttonDeleteYes.addEventListener("click", function_delete)
 
 
 
@@ -273,17 +274,6 @@ function function_delete(){
     
 
 
-buttonModalRed.addEventListener("click",function_edit);
-
-function function_edit(){
-    const resultado = window.confirm('¿Estas seguro de que quieres borrar el post?')
-
-        if (resultado === true) {
-            function_delete();
-       
-        }
-            
-            }
 
     
 }
