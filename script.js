@@ -169,7 +169,7 @@ const divTotal = document.createElement("div");
     modalFooter.appendChild(divTotal);
 
     const divTotalDelete = document.createElement("div")
-    divTotalDelete.classList.add("div-total-delete")
+    divTotalDelete.classList.add("div-total-delete");
 
     modalFooter.appendChild(divTotalDelete);
 
@@ -230,7 +230,7 @@ const divTotal = document.createElement("div");
       }))
 
       const divDeletebuttons = document.createElement("div");
-      divDeletebuttons.classList.add("div-delete-buttons")
+      divDeletebuttons.classList.add("div-delete-buttons");
 
       const buttonDeleteYes = document.createElement("button");
       buttonDeleteYes.classList = "btn btn-secundary";
@@ -243,20 +243,18 @@ const divTotal = document.createElement("div");
       buttonDeleteNo.innerHTML = "No";
 
       
-      divTotalDelete.appendChild(divDeletebuttons)
-      divDeletebuttons.appendChild(buttonDeleteYes)
-      divDeletebuttons.appendChild(buttonDeleteNo)
+      divTotalDelete.appendChild(divDeletebuttons);
+      divDeletebuttons.appendChild(buttonDeleteYes);
+      divDeletebuttons.appendChild(buttonDeleteNo);
 
-      buttonModalYellow.addEventListener("click", function_delete_buttons)
+      buttonModalYellow.addEventListener("click", function_delete_buttons);
 
         function function_delete_buttons() {
             if(divTotalDelete.classList.contains('div-total-delete')) {
-                divTotal.classList.replace('div-total-delete', 'div-total-delete_show');
-                return
-            }
-            if(divTotalDelete.classList.contains('div-total-delete_show')) {
-                divTotal.classList.replace('div-total-delete_show', 'div-total-delete');
-                return
+                divTotalDelete.classList.replace('div-total-delete', 'div-total-delete_show');
+                
+            }else {
+                divTotalDelete.classList.replace('div-total-delete_show', 'div-total-delete');
             }
         }
 
