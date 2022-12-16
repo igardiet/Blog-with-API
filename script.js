@@ -11,6 +11,8 @@ fetch(posts)
     .then(json => json.forEach(post=>createCard(post)))
 
 
+/*Funcion general crear cartas*/
+
 function createCard(post) {
     const divCard = document.createElement("div");
     divCard.classList = "card my-5";
@@ -19,8 +21,6 @@ function createCard(post) {
     divCard.setAttribute("data-bs-target", "#exampleModal" + post.id);
     const imgCard = document.createElement("img");
     imgCard.classList = "card-img-top";
-
-   
 
     const cargarImagen = (entradas, observador) => {
 
@@ -62,10 +62,8 @@ function createCard(post) {
 
 
 
-
-
     
-/**************************************************************************/                      
+/*Crear modal de la carta*/                     
 
 const divModal = document.createElement("div");
 divModal.classList = "modal fade";
@@ -121,6 +119,9 @@ pBody.textContent = post.body;
 modalBody.appendChild(pBody);
 
 
+
+/*Nombre ususario y Email (Modal)*/
+
     fetch(users + `/${post.userId}`)
     .then(res => res.json())
     .then(json => {
@@ -163,20 +164,30 @@ buttonModalBlue.innerHTML = "Comments";
 
 modalFooter.appendChild(buttonModalBlue);
 
+
+
+/*Divs creados en footer*/
+
+/*Comentarios*/
 const divTotal = document.createElement("div");
 divTotal.classList.add("div-total"); 
 
 modalFooter.appendChild(divTotal);
 
+/*Delete*/
 const divTotalDelete = document.createElement("div")
 divTotalDelete.classList.add("div-total-delete");
 
 modalFooter.appendChild(divTotalDelete);
 
+/*Edit*/
 const divInput = document.createElement("div");
 divInput.classList.add("div-input");
 
 modalFooter.appendChild(divInput);
+
+
+/*Boton Edit*/
 
 const pTitleInput = document.createElement("p");
 pTitleInput.classList.add("p-title-input")
@@ -187,7 +198,6 @@ titleInput.setAttribute("value", post.title);
 titleInput.style.width = "20vw";
 const titleLabel = document.createElement("label");
 titleLabel.innerHTML= `<b>Title:</b><br>`;
-
 
 divInput.appendChild(pTitleInput);
 pTitleInput.appendChild(titleLabel);
@@ -203,12 +213,12 @@ bodyInput.setAttribute("cols", "50");
 bodyInput.setAttribute("rows", "8");
 bodyInput.textContent = post.body
 const bodyLabel = document.createElement("label");
-bodyLabel.innerHTML= `<b>Body:</b>`;
-
+bodyLabel.innerHTML= `<b>Body:</b><br>`;
 
 divInput.appendChild(pBodyInput);
 pBodyInput.appendChild(bodyLabel);
 bodyLabel.appendChild(bodyInput);
+
 
 const buttonInput = document.createElement("boton");
 buttonInput.classList.add("button-input");
@@ -220,7 +230,7 @@ divInput.appendChild(buttonInput);
 buttonInput.addEventListener("click", function_update);
 
 
-/*Comments*/
+/*Boton Comments*/
 
     fetch("http://localhost:3000/post/" + post.id + "/comments")
     .then(res => res.json())
@@ -272,9 +282,13 @@ buttonInput.addEventListener("click", function_update);
             }
                       
         }
-        imgCard.addEventListener("click", function_card);
 
-        function function_card() {
+        imgCard.addEventListener("click", function_openCard);
+
+
+/*Funcion abrir carta eliminando contenido creado*/
+
+        function function_openCard() {
 
             
             if(divTotal.classList.contains('div-total_show')) {
@@ -293,6 +307,8 @@ buttonInput.addEventListener("click", function_update);
         
 
       }))
+
+/*Boton Delete*/
 
       const divDeletebuttons = document.createElement("p");
       divDeletebuttons.classList.add("div-delete-buttons");
@@ -333,7 +349,13 @@ buttonInput.addEventListener("click", function_update);
         }
 
 
-        buttonDeleteYes.addEventListener("click", function_delete);
+
+/*Boton si*/
+
+buttonDeleteYes.addEventListener("click", function_delete);
+
+
+
 
 function function_delete(){
     fetch(posts + `/${post.id}`,{
@@ -342,7 +364,10 @@ function function_delete(){
     
     }
 
-        buttonDeleteNo.addEventListener("click", function_button_deleteNo);
+
+/*Boton No*/
+
+buttonDeleteNo.addEventListener("click", function_button_deleteNo);
 
 function function_button_deleteNo () {
     if(divTotalDelete.classList.contains('div-total-delete_show')) {
@@ -354,7 +379,7 @@ function function_button_deleteNo () {
 
 
 
-
+/*Boton Edit*/
 
     buttonModalYellow.addEventListener("click",function_input);
     
