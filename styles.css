@@ -1,0 +1,154 @@
+.btn {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 25%;
+    border: 1px solid black;
+    cursor: pointer;
+    
+}
+
+.modal-content{
+    margin-top: 100px;
+    width: 100%;
+    border: 2px solid  rgb(109, 252, 142);;
+
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    margin-top: 10.5%;
+}
+
+body {
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #021B79 );  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #021B79 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.cardHidden{
+    display: none;
+}
+
+.card {
+    margin: 10px;
+    cursor: pointer;
+    border: 2px solid #212529;
+    box-shadow: 5px 5px 5px 5px rgba(32,32,32,0.3);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 238);
+}
+
+.card img {
+    margin-top: 7px;
+    border-radius: 6px;
+    height: 50vh;
+
+    opacity: 0;
+    transform: scale(0.9);
+    transition: .7s ease-in-out all;
+}
+
+.card img.visible {
+    margin-top: 7px;
+    border-radius: 6px;
+    height: 50vh;
+
+    opacity: 1;
+    transform: scale(1);
+}
+
+.email-comments {
+    text-align: right;
+    font-size: 85%;
+    font-style: oblique;
+    padding-top: 3%;
+}
+
+.div-comments {
+    border-top: 0.5px solid grey;
+    max-height: 200px;
+    margin-top: 3%;
+    margin-bottom: 5%;
+
+}
+
+.div-total {
+    display: none;
+}
+
+.div-total_show {
+    overflow: scroll;
+    max-height: 200px;
+    display: block;
+}
+
+
+.navbar {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    margin-top:-10%;
+}
+
+.div-total-delete{
+    display: none;
+}
+
+.div-total-delete_show{
+    width: 100%;
+}
+
+.div-input{
+    display:none;
+}
+
+
+
+
+.div-delete-buttons {
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.delete-yn{
+    margin-top: 10px;
+    border-radius: 1000px;
+}
+
+.delete-yn:hover {
+    background-color: #0c6dfd;
+    color: white;
+}
+
+.p-title-input{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.title-input{
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.p-body-input {
+    text-align: center;
+}
+
+.body-input {
+    margin: 0 auto;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.btn-input:hover {
+    background-color: #FFC007;
+
+}
